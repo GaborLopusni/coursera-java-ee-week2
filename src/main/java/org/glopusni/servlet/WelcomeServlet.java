@@ -16,11 +16,18 @@ public class WelcomeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
+        String firstName = request.getParameter("first_name");
+        String lastName = request.getParameter("last_name");
 
         Writer writer = response.getWriter();
 
         writer.write(PAGE_HEADER);
         writer.write(WELCOME_TEXT);
+
+        writer.write("<ul>\n" +
+                "<li>First name:" + firstName + "\n" +
+                "<li>Last name:" + lastName + "\n" +
+                "</ul>\n");
         writer.write(PAGE_FOOTER);
         writer.close();
     }
